@@ -52,6 +52,7 @@ public:
     // ------------------------------------------------------------------------
     void setMat4(const std::string &name, const glm::mat4 &mat) const;
 
+    void setMVP(const glm::mat4 model, const glm::mat4 view, const glm::mat4 projection);
 
 private:
     // utility function for checking shader compilation/linking errors.
