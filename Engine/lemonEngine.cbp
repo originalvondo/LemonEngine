@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="lemonEngine" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/lemonEngine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="DEPENDENCIES/Include" />
+				</Compiler>
+				<Linker>
+					<Add library="libopengl32.a" />
+					<Add library="libglfw3.a" />
+					<Add library="libglfw3dll.a" />
+					<Add library="libassimp.dll.a" />
+					<Add directory="DEPENDENCIES/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/lemonEngine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="DEPENDENCIES/Include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="libopengl32.a" />
+					<Add library="libglfw3.a" />
+					<Add library="libglfw3dll.a" />
+					<Add library="libassimp.dll.a" />
+					<Add directory="DEPENDENCIES/lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="DEPENDENCIES/Include/Utility/Camera.cpp" />
+		<Unit filename="DEPENDENCIES/Include/Utility/Camera.h" />
+		<Unit filename="DEPENDENCIES/Include/Utility/Mesh.cpp" />
+		<Unit filename="DEPENDENCIES/Include/Utility/Mesh.h" />
+		<Unit filename="DEPENDENCIES/Include/Utility/Model.cpp" />
+		<Unit filename="DEPENDENCIES/Include/Utility/Model.h" />
+		<Unit filename="DEPENDENCIES/Include/Utility/Shader.cpp" />
+		<Unit filename="DEPENDENCIES/Include/Utility/Shader.h" />
+		<Unit filename="DEPENDENCIES/Include/Utility/stb_image.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imconfig.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_demo.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_draw.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_impl_glfw.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_impl_glfw.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_impl_opengl3.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_impl_opengl3.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_impl_opengl3_loader.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_internal.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_tables.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imgui_widgets.cpp" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imstb_rectpack.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imstb_textedit.h" />
+		<Unit filename="DEPENDENCIES/Include/imgui/imstb_truetype.h" />
+		<Unit filename="DEPENDENCIES/Include/stb_image.h" />
+		<Unit filename="glad.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.cpp" />
+		<Unit filename="models/floor/floor.blend" />
+		<Unit filename="models/floor/floor.mtl" />
+		<Unit filename="models/floor/floor.obj" />
+		<Unit filename="models/floor/textures/brickwall.jpg" />
+		<Unit filename="models/floor/textures/cyborg_diffuse.png" />
+		<Unit filename="models/floor/textures/cyborg_normal.png" />
+		<Unit filename="models/floor/textures/cyborg_specular.png" />
+		<Unit filename="models/floor/textures/wood.png" />
+		<Unit filename="models/space_station/InfoBot_Panic_Bot_color.jpg" />
+		<Unit filename="models/space_station/InfoBot_Panic_Bot_nmap.jpg" />
+		<Unit filename="models/space_station/Railings_texture_UVMap_color.jpg" />
+		<Unit filename="models/space_station/Railings_texures_UVMap_nmap.jpg" />
+		<Unit filename="models/space_station/Room_1_Done_UVMap_color_3.jpg" />
+		<Unit filename="models/space_station/Room_1_Done_UVMap_nmap.jpg" />
+		<Unit filename="models/space_station/Room_1_Done_UVMap_rough.jpg" />
+		<Unit filename="models/space_station/Space Station Scene.blend" />
+		<Unit filename="models/space_station/Space Station Scene.mtl" />
+		<Unit filename="models/space_station/Space Station Scene.obj" />
+		<Unit filename="models/space_station/column_UVMap_color.jpg" />
+		<Unit filename="models/space_station/column_UVMap_nmap.jpg" />
+		<Unit filename="models/space_station/out_side_UVMap_color.jpg" />
+		<Unit filename="models/space_station/out_side_UVMap_nmap.jpg" />
+		<Unit filename="models/space_station/t1_UVMap_color.jpg" />
+		<Unit filename="models/space_station/t1_UVMap_nmap.jpg" />
+		<Unit filename="models/space_station/t1_UVMap_rough.jpg" />
+		<Unit filename="models/space_station/texture_3_UVMap_color.jpg" />
+		<Unit filename="models/space_station/texture_3_UVMap_color.png.001.jpg" />
+		<Unit filename="models/space_station/texture_3_UVMap_nmap.jpg" />
+		<Unit filename="models/space_station/texture_3_UVMap_nmap.png.001.jpg" />
+		<Unit filename="models/space_station/texture_3_UVMap_rough.jpg" />
+		<Unit filename="models/space_station/texture_3_UVMap_rough.png.001.jpg" />
+		<Unit filename="models/sun/sun.mtl" />
+		<Unit filename="models/sun/sun.obj" />
+		<Unit filename="shaders/depthShader.frag" />
+		<Unit filename="shaders/depthShader.vert" />
+		<Unit filename="shaders/light.frag" />
+		<Unit filename="shaders/light.vert" />
+		<Unit filename="shaders/model.frag" />
+		<Unit filename="shaders/model.vert" />
+		<Unit filename="utility.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
