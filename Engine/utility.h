@@ -15,10 +15,10 @@
 // Global variables
 int window_width = 1300;
 int window_height = 650;
-float window_color[] = { 0.1f, 0.1f, 0.1f };
-float lightColorArr[] = { 1.0f, 1.0f, 1.0f };
-float lightPosArr[] = { -2.0f, 4.0f, -1.0f };
-const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+glm::vec3 window_color(0.1f, 0.1f, 0.1f);
+glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
+glm::vec3 lightPos(-10.0f, 12.0f, -15.0f);
+const unsigned int SHADOW_WIDTH = 4096, SHADOW_HEIGHT = 4096;
 float lastFrame = 0.0f;
 
 // Structs
@@ -31,8 +31,8 @@ struct Light{
 void framebuffer_resize_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    window_width = width;
-    window_height = height;
+    // window_width = width;   // this contains a bug
+    // window_height = height; // this one too
 }
 
 GLFWwindow* InitWindow()
@@ -88,14 +88,16 @@ unsigned int createDepthMapFB(unsigned int &depthMap)
 
     glGenTextures(1, &depthMap);
     glBindTexture(GL_TEXTURE_2D, depthMap);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32F,
                  SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);
+    ///float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    //glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 
     glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
