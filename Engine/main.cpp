@@ -15,11 +15,11 @@ int main()
     ImGuiIO& io = InitUI(window);
 
     // Cameras
-    glm::vec3 cameraPosition(0.0f, 0.0f, 10.0f);
+    glm::vec3 cameraPosition(0.0f, 5.0f, 10.0f);
     Camera cam1(cameraPosition);
 
     // Models
-    Model planet("models/floor/floor.obj");
+    Model scene("models/floor/scene.obj");
     Model light("models/sun/sun.obj");
 
     // Shaders
@@ -37,10 +37,12 @@ int main()
     unsigned int depthMap;
     unsigned int depthMapFBO = createDepthMapFB(depthMap);
 
+    glEnable(GL_CULL_FACE);
+
     // Game loop
     while(!glfwWindowShouldClose(window))
     {
-        glClearColor(window_color[0], window_color[1], window_color[2], 1.0f);
+        glClearColor(window_color.x, window_color.y, window_color.z, 1.0f);
         // polling events
         glfwPollEvents();
         // Setup deltaTime
@@ -60,12 +62,12 @@ int main()
 
         // Create a light object
         Light light1;
-        light1.color = glm::vec3(lightColorArr[0], lightColorArr[1], lightColorArr[2]);
-        light1.position = glm::vec3(lightPosArr[0], lightPosArr[1], lightPosArr[2]);
+        light1.color = lightColor;
+        light1.position = lightPos;
 
 
         // 1. first render to depth map
-        float near_plane = 1.0f, far_plane = 100.0f;
+        float near_plane = -10.0f, far_plane = 100.0f;
         glm::mat4 lightProjection = glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, near_plane, far_plane);
         glm::mat4 lightView = glm::lookAt(light1.position,
                                   glm::vec3( 0.0f, 0.0f,  0.0f),
@@ -80,7 +82,7 @@ int main()
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
         // Drawing to the depth map
         glCullFace(GL_FRONT);
-        planet.Draw(simpleDepthShader);
+        scene.Draw(simpleDepthShader);
         glCullFace(GL_BACK); // reset original culling face
 
 
@@ -100,7 +102,7 @@ int main()
         modelShader.setInt("shadowMap", 1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, depthMap);
-        planet.Draw(modelShader);
+        scene.Draw(modelShader);
 
         // Draw a light to show where the light is
         lightShader.use();
@@ -119,7 +121,7 @@ int main()
         // Window stuff
         ImGui::Begin("Window");
         ImGui::Text("framerate: %.2f fps", io.Framerate);
-        ImGui::ColorEdit3("background color", window_color);
+        ImGui::ColorEdit3("background color", &window_color.x);
         ImGui::End();
 
         // Depth map stuff
@@ -134,8 +136,8 @@ int main()
 
         // Light stuff
         ImGui::Begin("light");
-        ImGui::SliderFloat3("position", lightPosArr, -20.0f, 20.0f);
-        ImGui::ColorEdit3("color", lightColorArr);
+        ImGui::SliderFloat3("position", &lightPos.x, -50.0f, 50.0f);
+        ImGui::ColorEdit3("color", &lightColor.x);
         ImGui::End();
 
         // ImGUI rendering
