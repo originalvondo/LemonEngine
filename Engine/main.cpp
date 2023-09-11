@@ -8,6 +8,12 @@ int main()
 {
     // Window Initialization
     GLFWwindow* window = InitWindow();
+    // set window icon
+    GLFWimage icons[1];
+    icons[0].pixels = stbi_load("icon.jpeg", &icons[0].width, &icons[0].height, 0, 4);
+    glfwSetWindowIcon(window, 1, icons);
+    stbi_image_free(icons[0].pixels);
+    // ================================
     glEnable(GL_MULTISAMPLE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
@@ -137,7 +143,7 @@ int main()
 
         // Light stuff
         ImGui::Begin("light");
-        ImGui::SliderFloat3("position", &lightPos.x, -50.0f, 50.0f);
+        ImGui::SliderFloat3("position", &lightPos.x, -20.0f, 20.0f);
         ImGui::ColorEdit3("color", &lightColor.x);
         ImGui::End();
 
