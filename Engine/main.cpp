@@ -10,12 +10,15 @@ int main()
     GLFWwindow* window = InitWindow();
     glEnable(GL_MULTISAMPLE);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glEnable(GL_CULL_FACE);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // UI Initialization
     ImGuiIO& io = InitUI(window);
 
     // Cameras
-    glm::vec3 cameraPosition(0.0f, 5.0f, 10.0f);
+    glm::vec3 cameraPosition(10.0f, 10.0f, 50.0f);
     Camera cam1(cameraPosition);
 
     // Models
@@ -36,8 +39,6 @@ int main()
     // texture & framebuffer for storing depth values
     unsigned int depthMap;
     unsigned int depthMapFBO = createDepthMapFB(depthMap);
-
-    glEnable(GL_CULL_FACE);
 
     // Game loop
     while(!glfwWindowShouldClose(window))

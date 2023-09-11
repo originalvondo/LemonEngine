@@ -56,7 +56,13 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 
 void main()
 {
-    vec3 color = texture(texture_diffuse1, fs_in.TexCoords).rgb;
+    vec4 texColor = texture(texture_diffuse1, fs_in.TexCoords);
+    if(texColor.a < 0.1)
+        discard;
+
+    vec3 color = texColor.rgb;
+
+
     vec3 normal = normalize(fs_in.Normal);
     // ambient
     vec3 ambient = 0.15 * lightColor;
