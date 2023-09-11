@@ -78,7 +78,7 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
-map_Bump rock.png
+map_Bump textures\\rock.png
 
 newmtl Material.009
 Ns 13.725486
@@ -89,7 +89,7 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
-map_Bump rock.png
+map_Bump textures\\rock.png
 
 newmtl Material.010
 Ns 13.725486
@@ -100,7 +100,7 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
-map_Bump rock.png
+map_Bump textures\\rock.png
 
 newmtl Material.011
 Ns 13.725486
@@ -111,7 +111,7 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
-map_Bump rock.png
+map_Bump textures\\rock.png
 
 newmtl Material.012
 Ns 13.725486
@@ -122,7 +122,7 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
-map_Bump rock.png
+map_Bump textures\\rock.png
 
 newmtl Material.013
 Ns 13.725486
@@ -133,7 +133,7 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
-map_Bump rock.png
+map_Bump textures\\rock.png
 
 newmtl blinn1SG
 Ns 0.000000
@@ -144,9 +144,8 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 1
-map_Bump 1
-map_Kd color.tga
-map_Ks specular.tga
+map_Kd textures\\color.tga
+map_Ks textures\\specular.tga
 
 newmtl mat_bannana_leaf_twoside
 Ns 10.000002
