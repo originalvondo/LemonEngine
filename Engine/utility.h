@@ -39,7 +39,7 @@ GLFWwindow* InitWindow()
 {
     glfwInit();
     glfwWindowHint(GLFW_SAMPLES, 8);
-    GLFWwindow* window = glfwCreateWindow(window_width, window_height, "kire", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(window_width, window_height, "LemonEngine", nullptr, nullptr);
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_resize_callback);
 
