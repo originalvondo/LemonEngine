@@ -17,7 +17,7 @@ int window_width = 1300;
 int window_height = 650;
 glm::vec3 window_color(0.0f, 0.0f, 0.0f);
 glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
-glm::vec3 lightPos(-10.0f, 12.0f, 50.0f);
+glm::vec3 lightPos(-10.0f, 20.0f, 20.0f);
 const unsigned int SHADOW_WIDTH = 4096, SHADOW_HEIGHT = 4096;
 float lastFrame = 0.0f;
 
