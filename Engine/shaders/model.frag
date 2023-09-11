@@ -21,17 +21,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
     // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
-    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    //float closestDepth = texture(shadowMap, projCoords.xy).r;
-    // get depth of current fragment from light's perspective
-    //float currentDepth = projCoords.z;
-    // calculate bias (based on depth map resolution and slope)
-    //vec3 normal = normalize(fs_in.Normal);
-    //vec3 lightDir = normalize(lightPos - fs_in.FragPos);
     float bias = 0.00005;//max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
-    // check whether current frag pos is in shadow
-    // float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
-    // PCF
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
     for(int x = -1; x <= 1; ++x)
@@ -41,8 +31,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
             vec3 UVC = vec3(projCoords.xy + vec2(x, y) * texelSize, projCoords.z - bias);
             float pcfDepth = texture(shadowMap, UVC);
 
-            //float pcfDepth = texture(shadowMap, projCoords.xy + vec2(x, y) * texelSize).r;
-            shadow += pcfDepth;//projCoords.z - bias > pcfDepth  ? 1.0 : 0.0;
+            shadow += pcfDepth;
         }
     }
     shadow /= 9.0;
@@ -56,12 +45,12 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 
 void main()
 {
-    vec4 texColor = texture(texture_diffuse1, fs_in.TexCoords);
-    if(texColor.a < 0.1)
+    vec4 texDiffuseColor = texture(texture_diffuse1, fs_in.TexCoords);
+
+    if(texDiffuseColor.a < 0.1)
         discard;
 
-    vec3 color = texColor.rgb;
-
+    vec3 color = texDiffuseColor.rgb;
 
     vec3 normal = normalize(fs_in.Normal);
     // ambient
