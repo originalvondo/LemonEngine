@@ -1,5 +1,16 @@
-# Blender MTL File: 'None'
-# Material Count: 18
+# Blender MTL File: 'scene.blend'
+# Material Count: 17
+
+newmtl 10446_Palm_Tree_v1
+Ns 10.000002
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd textures\\Palm_Tree_v1_Diffuse.jpg
 
 newmtl Cyborg
 Ns 92.156872
@@ -147,49 +158,27 @@ illum 1
 map_Kd textures\\color.tga
 map_Ks textures\\specular.tga
 
-newmtl mat_bannana_leaf_twoside
-Ns 10.000002
+newmtl lambert3SG.002
+Ns 0.000000
 Ka 1.000000 1.000000 1.000000
-Kd 0.588200 0.588200 0.588200
+Kd 0.000000 0.000000 0.000000
 Ks 0.000000 0.000000 0.000000
 Ke 0.0 0.0 0.0
-Ni 1.500000
+Ni 1.000000
 d 1.000000
 illum 1
-map_Kd textures\\Banana_Leaves.png
+map_Kd textures\\VL1X8_002.png
 
-newmtl mat_bannana_trunk
-Ns 20.999999
+newmtl lambert4SG.002
+Ns 0.000000
 Ka 1.000000 1.000000 1.000000
-Kd 0.588200 0.588200 0.588200
-Ks 0.324000 0.324000 0.324000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
 Ke 0.0 0.0 0.0
-Ni 1.500000
+Ni 1.000000
 d 1.000000
-illum 2
-map_Kd textures\\banana_trunk.jpg
-
-newmtl mat_coconut_leaf_twoside
-Ns 10.000002
-Ka 1.000000 1.000000 1.000000
-Kd 0.588200 0.588200 0.588200
-Ks 0.162000 0.162000 0.162000
-Ke 0.0 0.0 0.0
-Ni 1.500000
-d 1.000000
-illum 2
-map_Kd textures\\coconut_leaf.png
-
-newmtl mat_coconut_trunk
-Ns 10.000002
-Ka 1.000000 1.000000 1.000000
-Kd 0.588200 0.588200 0.588200
-Ks 0.162000 0.162000 0.162000
-Ke 0.0 0.0 0.0
-Ni 1.500000
-d 1.000000
-illum 2
-map_Kd textures\\coconut_trunk.jpg
+illum 1
+map_Kd textures\\stalk_003_gradient.jpg
 
 newmtl watchtower
 Ns 0.000000

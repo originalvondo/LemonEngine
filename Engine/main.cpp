@@ -16,8 +16,8 @@ int main()
     // ================================
     glEnable(GL_MULTISAMPLE);
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // UI Initialization
@@ -65,8 +65,6 @@ int main()
         view = cam1.GetViewMatrix();
         projection = glm::perspective(glm::radians(45.0f), (float)window_width / window_height, 0.1f, 1000.0f);
 
-
-
         // Create a light object
         Light light1;
         light1.color = lightColor;
@@ -87,11 +85,10 @@ int main()
         glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
         glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-        // Drawing to the depth map
         glCullFace(GL_FRONT);
+        // Drawing to the depth map
         scene.Draw(simpleDepthShader);
-        glCullFace(GL_BACK); // reset original culling face
-
+        glCullFace(GL_BACK);
 
         // go back to default framebuffer
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
